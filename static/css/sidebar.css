@@ -1,0 +1,162 @@
+#SIDEBAR{
+    position:fixed;
+/*MARGIN-TOP:2PX;*/
+/* MARGIN-LEFT:2; */
+WIDTH:5%;
+/*HEIGHT:100%;*/
+FLOAT:LEFT;
+left:0;
+background-color: #2b333b;
+/*background-color:black;*/
+border:1px solid #dedede;
+/* box-shadow: 1px 0px 3px 0px #9e9e9e; */
+min-height:100vh;
+z-index:999;
+/*border-radius: 10px;*/
+
+/* BACKGROUND-COLOR:#00c3ff; */
+}
+#SIDEBAR UL{
+/*MARGIN-top:10;*/
+PADDING:0;
+
+/* border-radius: 10px; */
+height:auto;
+}
+#SIDEBAR UL LI{
+LIST-STYLE-TYPE:NONE;
+FLOAT:NONE;
+DISPLAY:BLOCK;
+padding:15px 0px;
+/* border:1px solid #000; */
+min-HEIGHT:45PX;
+WIDTH:100%;
+/* TEXT-ALIGN:CENTER; */
+ border-bottom: 1px solid #1a222a; 
+/* border-bottom-length: 50px; */
+FONT-FAMILY:"times new roman";
+FONT-WEIGHT:NONE;
+text-align:center;
+transition:1s ease;
+}
+
+#SIDEBAR UL LI:hover{
+/*BACKGROUND-COLOR:#e6e6e6;*/
+transition:0.4s ease;
+/* border-left:4px solid #118bdd; */
+
+}
+#SIDEBAR UL LI A{
+COLOR:#5e5c5c;
+TEXT-DECORATION:NONE;
+font-size:15px;
+font-weight:bold;
+    text-align:center;
+
+}
+#SIDEBAR UL LI:hover i{
+COLOR:#42eff5;
+}
+.sidebar_text{
+transition:0.4s ease;
+}
+#SIDEBAR UL LI:hover .sidebar_text{
+COLOR:#fff;
+}
+#sidebar ul li.active{
+/*BACKGROUND-COLOR:#f9f9f9;*/
+    transition:0.4s ease;
+    /* border-left:4px solid #007acc; */
+    font-weight:bold;
+    /* color:black; */
+}
+#sidebar ul li.active a{
+/* BACKGROUND-COLOR:#dedede;
+    transition:0.4s ease;
+    border-left:4px solid #007acc; */
+    color:black;
+}
+#sidebar ul li a i{
+color:#808080;
+font-size:22px;
+
+}
+#sidebar ul li:first-child{
+height:70px;
+border:none;
+background-color:#222b33;
+
+}
+
+
+p{
+padding:5px;
+margin:5px;
+
+}
+
+
+
+
+.sidebar_overlay {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0, 0.9);
+overflow-x: hidden;
+transition: 0.5s;
+}
+
+.sidebar_overlay_content {
+position: relative;
+top: 25%;
+width: 100%;
+/*text-align: center;*/
+margin-top: 30px;
+}
+
+.sidebar_overlay a {
+padding: 8px;
+text-decoration: none;
+font-size: 36px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.sidebar_overlay a:hover, .sidebar_overlay a:focus {
+color: #f1f1f1;
+}
+
+.sidebar_overlay .closebtn {
+position: absolute;
+top: 0px;
+right: 45px;
+font-size: 60px;
+color:white;
+
+}
+
+/*@media screen and (max-height: 450px) {*/
+/*  .sidebar_overlay a {font-size: 20px}*/
+/*  .sidebar_overlay .closebtn {*/
+/*  font-size: 40px;*/
+/*  top: 15px;*/
+/*  right: 35px;*/
+/*  color:white;*/
+/*  }*/
+/*}*/
+
+
+
+
+/*
+#SIDEBAR LI:HOVER:not(:first-child){
+BACKGROUND-COLOR:#dedede;
+}
+
+*/

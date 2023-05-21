@@ -1,0 +1,37 @@
+{% load static %}
+<style>
+    .sidebar_text{
+    color:#808080;
+    display:none;
+}
+
+</style>
+<div id="sidebar" style="transition:0.5s ease">
+    <ul class="">
+        <li>
+            
+        </li>
+        
+        <!--<li><a href=""><i class="fas fa-home"></i> &nbsp; <span class="sidebar_text">Home</span></a></li>-->
+      
+        <li><a href="{% url 'my_profile' %}"><i class="fa fa-user" aria-hidden="true"></i> &nbsp; <span class="sidebar_text">My Profile</span></a></li>
+        <li><a href="{% url 'create_new_editor_page' %}" ><i class="fa fa-file-text" aria-hidden="true"></i> &nbsp; <span class="sidebar_text">Create New Paper</span></a></li>
+        <!--<li><a href=""><i class="fa fa-key" aria-hidden="true"> </i> &nbsp; <span class="sidebar_text">Change Password</span></a></li>-->
+        <li><a href="{% url 'user_papers_detail' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> &nbsp; <span class="sidebar_text">My Papers</span></a></li> 
+        <li><a href="{% url 'user_shared_papers_detail' %}"><i class="fa fa-clone" aria-hidden="true"></i> &nbsp; <span class="sidebar_text">Shared Papers</span></a></li>
+         
+        
+        
+       
+        <li><a href=""><i class="fa fa-sign-out"></i> &nbsp; <span class="sidebar_text">Logout</span></a></li>
+  <label class="closebtn" for="show_hide_sidebar" style="display:none;">&times;</label>
+
+    </ul>
+</div>
+
+
+
+
+
+
+

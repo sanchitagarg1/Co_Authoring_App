@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block base_content %}
+
+<!-- <div>
+    <p>JSON Data: {{ data_list }}</p>
+</div> -->
+
+
+
+
+{% for paper in data_list %}
+
+
+
+<div class="row test_row">
+
+    <div
+    style="margin-bottom:20px;width: 100%;border:0px solid #dedede;border-radius: 0px;box-shadow:0px 3px 10px -7px;min-height: 150px;padding: 20px;color:#777777;">
+  
+    <div class="row">
+        <div class="col-sm-3">
+            <div style="font-weight: bold;font-family: 'Crimson Text', serif;font-size: 30px;line-height: 1;">
+                <p>{{ paper.title }}</p>
+            </div>
+
+        </div>
+        
+        <div class="col-sm-6">
+            <div style="text-align: left;padding-left:15px;border-left: 1px solid #dedede;">
+               
+                
+                 <i class="fa fa-graduation-cap" aria-hidden="true"></i><strong> Authors:</strong>
+                {{ paper.authors  }}
+                <br>
+                <strong><i class="fa fa-book" aria-hidden="true"></i>
+                
+                    Title:</strong>
+                {{ paper.title  }}
+                <br>
+                <!--<strong><i class="fa fa-list-ol" aria-hidden="true"></i>-->
+                <!--    MM:</strong>-->
+                <!--    {{ paper.id  }}-->
+                
+               
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div style="text-align: left;padding-left:15px;border-left: 1px solid #dedede;">
+                
+                <button type="button" class="btn btn-success" onclick=(fun_share_id({{paper.id}})) data-toggle="modal" data-target="#share_modal">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    Share
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="height: 20px;"></div>
+    
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div style="text-align: left;" class="test_creation_date_div"><strong><i class="far fa-calendar-alt"></i> Created/Updated on:</strong><br>
+                
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div style="border-left: 1px solid #dedede;">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+                        style="text-align: left;">
+
+
+                        
+
+
+
+
+                        <div style="padding-left:15px;">
+                            
+                            
+                            <div style="display: inline-flex;color:blue;cursor: default;margin-left: 20px;">
+                                <a href="{% url 'editor_page' paper_id=paper.id %}">View</a> 
+                                                          
+         
+                            <div >
+                            
+                           
+
+                           
+                        </div>
+                         
+                        </div>
+                        
+                        
+                        
+                        
+
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      
+
+                       
+
+                  
+                        </div>
+                        
+                    </div>
+                    
+                   
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+   
+</div>
+
+</div>
+
+
+
+
+
+
+<script>
+
+function fun_share_id(paper_id){
+    $("#shared_username_hidden").val(paper_id)
+}
+
+
+</script>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

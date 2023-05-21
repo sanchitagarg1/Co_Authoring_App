@@ -1,0 +1,74 @@
+
+.myheader {
+    height: 100vh;
+  
+    display: flex;
+    background: url('../images/cover.jpg'),linear-gradient(rgba(125, 125, 216,0.4),rgba(125, 125, 216,0.4));
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* justify-content: center; */
+    margin-bottom: 30px;
+    background-position: fixed;
+  }
+  .myheader .navbar {
+    background-color: #007acc;
+    border: none;
+    /* opacity: 0.6; */
+  }
+  #body {
+    position: relative;
+    z-index: 2;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    display: block;
+  
+  }
+
+  @media only screen and (max-width: 336px){
+  
+  .img-fluid{
+  padding:20px 20px;
+  }
+   #main_content{
+      margin-top:200px;
+    }
+  
+      .slider_message_text{
+  padding:20px !important;
+  }
+  }
+ 
+
+
+  @media (min-width: 768px) and (max-width: 992px){
+  
+    #main_content{
+      margin-top:180px;
+    }
+  
+  
+  }
+  
+  
+
+  
+  @media screen and (max-width:768px){
+  
+  
+  #body{
+      margin-top:50px;
+  }
+  
+  }
+ 
+  
+  @keyframes my_animation_in{
+    0%{
+     top:100%;
+    }
+    100%{
+      top:50%;
+    }
+  }
+  

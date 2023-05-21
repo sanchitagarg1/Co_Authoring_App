@@ -1,0 +1,1 @@
+from Anjaniya.wsgi import application

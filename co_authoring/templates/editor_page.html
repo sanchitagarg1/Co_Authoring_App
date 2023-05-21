@@ -1,0 +1,1064 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block base_content %}
+
+<link rel="stylesheet" href="{% static 'css/editor_page.css' %}">
+
+<style>
+    .field_button{
+      display: none;
+    }
+    
+    .btn-13 {
+  background-color: #89d8d3;
+background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+  border: none;
+  z-index: 1;
+    width: 120px;
+  height: 40px;
+  border-radius:7px;
+}
+.btn-13:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+   background-color: #4dccc6;
+background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-13:hover {
+  color: #fff;
+}
+.btn-13:hover:after {
+  top: 0;
+  height: 100%;
+}
+.btn-13:active {
+  top: 2px;
+}
+  </style>
+
+
+
+
+<div class="container">
+    <div class="row">
+
+      {% for record in paper_record %}
+
+
+
+      <div class="col-md-1"></div>
+
+
+      <div class="col-md-9">
+
+        <div class="paper">
+            <h4 style="color: black;"><b>IOP Conference Series: Earth and Environmental Science</b></h4><hr>
+
+            <!-- {% for record in paper_record %} -->
+
+            <h3><b><div id="title" class="field">{{ record.title }}</div></b></h3>
+          <div id="authors" class="field">{{ record.authors }}</div>
+          <div class="headings"><b>Abstract:</div>
+            <div id="abstract" class="field">{{ record.abstract }}
+        </div>
+        <div class="headings"><b>Key Words</b></div>
+        <div id="keywords" class="field">{{ record.key_words }}</div>
+          <div class="headings"><b>1. Introduction</b></div>
+            <div id="introduction" class="field">{{ record.introduction }}</div>
+
+          <div class="headings"><b>2. Methodology</b></div>
+          <div id="methods" class="field"> {{ record.methods }}</div>
+
+          <div class="headings"><b>3. Results And Discussion</b></div>
+          <div  id="results" class="field">{{ record.results }}
+        </div><br>
+
+
+
+          <div class="headings"><b>4. Conclusion And Future Work</b></div>
+          <div id="conclusion" class="field">
+            {{ record.conclusion }}
+          </div>
+          <div class="headings"><b>5. References</b></div>
+          <div id="references" class="field">
+            {{ record.references }}
+          </div>
+      <!-- {% endfor %} -->
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="col-md-2">
+
+          <form action="{% url 'form_data' paper_id=record.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="hidden_title" name="title">
+            <input type="hidden" id="hidden_authors" name="authors">
+            <input type="hidden" id="hidden_abstract" name="abstract">
+            <input type="hidden" id="hidden_keywords" name="keywords">
+            <input type="hidden" id="hidden_introduction" name="introduction">
+            <input type="hidden" id="hidden_methods" name="methods">
+            <input type="hidden" id="hidden_results" name="results">
+            <input type="hidden" id="hidden_conclusion" name="conclusion">
+            <input type="hidden" id="hidden_references" name="references">
+            
+                <!--<div class="row" style="position:fixed">-->
+                <!--  <button type="submit" class="btn btn-success" id="add_content_btn">Save</button>-->
+                <!--</div>-->
+                
+                <div class="row" style="position:fixed">
+                  <button type="submit" class="custom-btn btn-13" id="add_content_btn">Save</button>
+                </div>
+                
+                    
+
+          
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="title_btn" id="add_content_title">Title</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="authors_btn" id="add_content_authors">Authors</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="abstract_btn" id="add_content_abstract">Abstract</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="keywords_btn" id="add_content_keywords">Keywords</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="introduction_btn" id="add_content_introduction">Introduction</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="methods_btn" id="add_content_methods">Methods</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="results_btn" id="add_content_results">Results</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="conclusion_btn" id="add_content_conclusion">Conclusion</button>-->
+
+          <!--</div>-->
+          <!--<div>-->
+          <!--  <button type="submit" class="btn btn-success field_button" name="references_btn" id="add_content_references">References</button>-->
+
+          <!--</div>-->
+
+          </form> 
+
+      </div>
+<script>
+  var record_id = {{ record.id }} ;
+</script>
+      {% endfor %}
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- script -->
+
+<script>
+    
+
+// var title,authors,abstract,introduction,methods,results,conclusion,references;
+
+// $(document).ready(function(){
+//     $('#add_content_btn').click(function(){
+//         alert("button clicked");
+//     })
+// })
+
+
+
+
+
+// for sending data to database
+
+var edited_field_id = null,
+    interval_action_title=1
+    interval_action_authors=1,
+    interval_action_abstract=1,
+    interval_action_keywords=1,
+    interval_action_introduction=1,
+    interval_action_methods=1,
+    interval_action_results=1,
+    interval_action_conclusion=1,
+    interval_action_references=1;
+var title_content,
+    authors_content,
+    abstract_content,
+    keywords_content,
+    introduction_content,
+    methods_content,
+    results_content,
+    conclusion_content,
+    references_content;
+
+
+
+
+
+
+
+
+
+//  FOR HIDING AND SHOWING BUTTONS  
+
+    // const add_content_title = document.getElementById("add_content_title");
+    // const add_content_author = document.getElementById("add_content_author");
+    // const add_content_abstract = document.getElementById("add_content_abstract");
+    // const add_content_intro = document.getElementById("add_content_intro");
+    // const add_content_method = document.getElementById("add_content_method");
+    // const add_content_results = document.getElementById("add_content_results");
+    // const add_content_conclusion = document.getElementById("add_content_conclusion");
+    // const add_content_reference = document.getElementById("add_content_reference");
+
+
+
+
+
+$(document).ready(function() {    
+
+
+    // $('#add_content_btn').click(function(){
+    //     // console.log("title cliked");
+        
+    //     // interval_action_title = 1;
+    //     // fun_title();
+    //     // fun_authors();
+    //     // fun_abstract();
+    //     // fun_keywords();
+    //     // fun_introduction();
+    //     // fun_methods();
+    //     // fun_results();
+    //     // fun_conclusion();
+    //     // fun_references();
+    //     //send data
+
+    // //   $('#add_content_title').hide();
+
+    // });
+
+
+    // $('#add_content_authors').click(function(){
+    //     console.log("authors cliked");
+    //     interval_action_authors = 1;
+        
+    //     fun_authors();
+    //     fun_title();
+    //     fun_abstract();
+    //     fun_keywords();
+    //     fun_introduction();
+    //     fun_methods();
+    //     fun_results();
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_authors').hide();
+
+    // });
+
+    // $('#add_content_abstract').click(function(){
+    //     console.log("abstract cliked");
+    //     interval_action_abstract = 1;
+
+    //     fun_abstract();
+    //     fun_title();
+    //     fun_authors();  
+    //     fun_keywords();      
+    //     fun_introduction();
+    //     fun_methods();
+    //     fun_results();
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_abstract').hide();
+
+    // });
+
+
+    // $('#add_content_keywords').click(function(){
+    //     console.log("keywords cliked");
+    //     interval_action_keywords = 1;
+
+    //     fun_abstract();
+    //     fun_title();
+    //     fun_authors();   
+    //     fun_keywords()     
+    //     fun_introduction();
+    //     fun_methods();
+    //     fun_results();
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_keywords').hide();
+
+    // });
+
+    // $('#add_content_introduction').click(function(){
+    //     console.log("introduction cliked");
+    //     interval_action_introduction = 1;
+
+    //     fun_introduction();
+    //     fun_title();
+    //     fun_authors();
+    //     fun_abstract();   
+    //     fun_keywords();     
+    //     fun_methods();
+    //     fun_results();
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_introduction').hide();
+
+    // });
+
+    // $('#add_content_methods').click(function(){
+    //     console.log("methods cliked");
+    //     interval_action_methods = 1;
+
+    //     fun_methods();
+    //     fun_title();
+    //     fun_authors();
+    //     fun_abstract();
+    //     fun_keywords();
+    //     fun_introduction();        
+    //     fun_results();
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_methods').hide();
+
+    // });
+
+    // $('#add_content_results').click(function(){
+    //     console.log("results cliked");
+    //     interval_action_results = 1;
+
+    //     fun_results();
+    //     fun_title();
+    //     fun_authors();
+    //     fun_keywords();
+    //     fun_abstract();
+    //     fun_introduction();
+    //     fun_methods();        
+    //     fun_conclusion();
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_results').hide();
+
+    // });
+
+    // $('#add_content_conclusion').click(function(){
+    //     console.log("conclusion cliked");
+    //     interval_action_conclusion = 1;
+
+    //     fun_conclusion();
+    //     fun_title();
+    //     fun_authors();
+    //     fun_abstract();
+    //     fun_keywords();
+    //     fun_introduction();
+    //     fun_methods();
+    //     fun_results();        
+    //     fun_references();
+    //     //send data
+
+    //   $('#add_content_conclusion').hide();
+
+    // });
+
+    // $('#add_content_references').click(function(){
+    //     console.log("references cliked");
+    //     interval_action_references = 1;
+
+    //     fun_references();
+    //     fun_title();
+    //     fun_authors();
+    //     fun_abstract();
+    //     fun_keywords();
+    //     fun_introduction();
+    //     fun_methods();
+    //     fun_results();
+    //     fun_conclusion();
+        
+    //     //send data
+
+    //   $('#add_content_references').hide();
+
+    // });
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+    $('#title').dblclick(function() {
+      $(this).attr('contenteditable', 'true').addClass('editing').focus();
+    //   $('#add_content_title').show();
+      edited_field_id = this.id;
+      interval_action_title = 0;
+    });
+
+
+    $('#title').blur(function() {
+      $(this).attr('contenteditable', 'false').removeClass('editing');
+    //   $('#add_content_title').hide();
+        
+        title_content = $("#title").text(); 
+        $('#hidden_title').val(title_content);    
+
+
+    });
+
+
+
+    $('#authors').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_authors').show();
+        edited_field_id = this.id;
+        interval_action_authors = 0;
+      });
+  
+  
+      $('#authors').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_authors').hide();
+        authors_content = $("#authors").text(); 
+        $('#hidden_authors').val(authors_content);
+
+  
+      });
+
+
+
+
+      $('#abstract').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_abstract').show();
+        edited_field_id = this.id;
+        interval_action_abstract = 0;
+      });
+  
+  
+      $('#abstract').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_abstract').hide();
+        abstract_content = $("#abstract").text(); 
+        $('#hidden_abstract').val(abstract_content);
+
+  
+      });
+
+
+
+
+      $('#keywords').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_keywords').show();
+        edited_field_id = this.id;
+        interval_action_keywords = 0;
+      });
+  
+  
+      $('#keywords').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_abstract').hide();
+        keywords_content = $("#keywords").text(); 
+        $('#hidden_keywords').val(keywords_content);
+
+  
+      });
+
+
+
+
+      $('#introduction').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_introduction').show();
+        edited_field_id = this.id;
+        interval_action_introduction = 0;
+      });
+  
+  
+      $('#introduction').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_introduction').hide();
+        introduction_content = $("#introduction").text(); 
+        $('#hidden_introduction').val(introduction_content);
+
+  
+      });
+
+
+
+
+
+      $('#methods').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_methods').show();
+        edited_field_id = this.id;
+        interval_action_methods = 0;
+      });
+  
+  
+      $('#methods').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_methods').hide();
+        methods_content = $("#methods").text(); 
+        $('#hidden_methods').val(methods_content);
+
+  
+      });
+
+
+
+
+
+      $('#results').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_results').show();
+        edited_field_id = this.id;
+        interval_action_results = 0;
+      });
+  
+  
+      $('#results').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_results').hide();
+        results_content = $("#results").text(); 
+        $('#hidden_results').val(results_content);
+
+  
+      });
+
+
+
+      
+      $('#conclusion').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_conclusion').show();
+        edited_field_id = this.id;
+        interval_action_conclusion = 0;
+      });
+  
+  
+      $('#conclusion').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_conclusion').hide();
+        conclusion_content = $("#conclusion").text(); 
+        $('#hidden_conclusion').val(conclusion_content);
+
+  
+      });
+
+
+
+      
+      $('#references').dblclick(function() {
+        $(this).attr('contenteditable', 'true').addClass('editing').focus();
+        // $('#add_content_references').show();
+        edited_field_id = this.id;
+        interval_action_references = 0;
+      });
+  
+  
+      $('#references').blur(function() {
+        $(this).attr('contenteditable', 'false').removeClass('editing');
+        // $('#add_content_references').hide();
+        references_content = $("#references").text(); 
+        $('#hidden_references').val(references_content);
+
+  
+      });
+
+
+
+
+
+
+
+
+      
+
+
+    // $('#add_content_btn').click(function(){
+    //         // alert(edited_field_id);
+    //         if(edited_field_id == "title"){
+    //             title_content = $("#title").text();
+    //             alert(title_content);
+    //         }else if(edited_field_id == "authors"){
+    //             authors_content = $("#authors").text();
+    //             alert(authors_content);
+    //         }else if(edited_field_id == "abstract"){
+    //             abstract_content = $("#abstract").text();
+    //             // alert(abstract_content);
+    //         }else if(edited_field_id == "introduction"){
+    //             introduction_content = $("#introduction").text();
+    //             // alert(introduction_content);
+    //         }else if(edited_field_id == "methods"){
+    //             methods_content = $("#methods").text();
+    //             // alert(methods_content);
+    //         }else if(edited_field_id == "results"){
+    //             results_content = $("#results").text();
+    //             // alert(results_content);
+    //         }else if(edited_field_id == "conclusion"){
+    //             conclusion_content = $("#conclusion").text();
+    //             // alert(conclusion_content);
+    //         }else if(edited_field_id == "references"){
+    //             references_content = $("#references").text();
+    //             // alert(references_content);
+    //         }
+    // });
+
+
+
+
+
+
+
+    // FOR AJAX
+
+
+    
+fun_title();
+fun_authors();
+fun_abstract();
+fun_keywords();
+fun_introduction();
+fun_methods();
+fun_results();
+fun_conclusion();
+fun_references();
+
+        
+function fun_title(){
+
+
+   let interval_title= setInterval(function()
+        {
+            if (interval_action_title === 0){
+                clearInterval(interval_title);
+                return;
+            }
+
+            console.log("title ajax" +record_id);
+
+            $.ajax({
+                // type:'POST',
+                url:"{% url 'ajax' %}",
+                dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+                  console.log((data[0].title));
+                  
+                    $("#title").empty();
+                    $("#title").append(data[0].title);
+
+                    
+                },
+                error: function(response){
+                  console.log("hi");
+                    // alert("No Data Found");
+                }
+            });
+        },7000);
+
+
+}
+
+
+
+
+ function fun_authors(){
+
+
+    let interval_authors= setInterval(function()
+         {
+             if (interval_action_authors === 0){
+                 clearInterval(interval_authors);
+                 return;
+             }
+ 
+             console.log("author ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                    $("#authors").empty();
+                    $("#authors").append(data[0].authors);
+                     
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+ 
+
+
+
+function fun_abstract(){
+
+
+    let interval_abstract= setInterval(function()
+         {
+             if (interval_action_abstract === 0){
+                 clearInterval(interval_abstract);
+                 return;
+             }
+ 
+             console.log("abstract ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                     $("#abstract").empty();
+                    $("#abstract").append(data[0].abstract);
+
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+
+
+
+ function fun_keywords(){
+
+
+let interval_keywords= setInterval(function()
+     {
+         if (interval_action_keywords === 0){
+             clearInterval(interval_keywords);
+             return;
+         }
+
+        //  console.log("keywords ajax");
+
+         $.ajax({
+             type:'GET',
+             url:"{% url 'ajax' %}",
+             dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+             success: function(response){
+              data=JSON.parse(JSON.stringify(response));
+              
+                  $("#keywords").empty();
+                  $("#keywords").append(data[0].key_words);
+             },
+             error: function(response){
+                //  alert("No Data Found");
+             }
+         });
+     },7000);
+
+
+}
+
+
+
+
+
+
+
+
+ function fun_introduction(){
+
+
+    let interval_introduction= setInterval(function()
+         {
+             if (interval_action_introduction === 0){
+                 clearInterval(interval_introduction);
+                 return;
+             }
+ 
+             console.log("intro ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+                  console.log(data);
+                    $("#introduction").empty();
+                    $("#introduction").append(data[0].introduction);
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+
+
+
+ function fun_methods(){
+
+
+    let interval_methods= setInterval(function()
+         {
+             if (interval_action_methods === 0){
+                 clearInterval(interval_methods);
+                 return;
+             }
+ 
+             console.log("mthod ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                    $("#methods").empty();
+                    $("#methods").append(data[0].methods);
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+ function fun_results(){
+
+
+    let interval_results= setInterval(function()
+         {
+             if (interval_action_results === 0){
+                 clearInterval(interval_results);
+                 return;
+             }
+ 
+             console.log("result ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                    $("#results").empty();
+                    $("#results").append(data[0].results);
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+ 
+ function fun_conclusion(){
+
+
+    let interval_conclusion= setInterval(function()
+         {
+             if (interval_action_conclusion === 0){
+                 clearInterval(interval_conclusion);
+                 return;
+             }
+ 
+             console.log("conclusion ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                    $("#conclusion").empty();
+                    $("#conclusion").append(data[0].conclusion);
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+
+ function fun_references(){
+
+
+    let interval_references= setInterval(function()
+         {
+             if (interval_action_references === 0){
+                 clearInterval(interval_references);
+                 return;
+             }
+ 
+             console.log("ref ajax");
+ 
+             $.ajax({
+                 type:'GET',
+                 url:"{% url 'ajax' %}",
+                 dataType: 'json',
+                contentType: 'json',
+                data:{
+                  'record_id':record_id,
+                  // CSRF: getCSRFTokenValue()
+                },
+                 success: function(response){
+                  data=JSON.parse(JSON.stringify(response));
+
+                    $("#references").empty();
+                    $("#references").append(data[0].references);
+                 },
+                 error: function(response){
+                    //  alert("No Data Found");
+                 }
+             });
+         },7000);
+ 
+ 
+ }
+
+
+
+
+
+
+
+});
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}

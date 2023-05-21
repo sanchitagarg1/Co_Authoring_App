@@ -1,0 +1,131 @@
+/**********************************
+Responsive navbar-brand image CSS
+- Remove navbar-brand padding for firefox bug workaround
+- add 100% height and width auto ... similar to how bootstrap img-responsive class works
+***********************************/
+.navbar-brand {
+    padding: 0px;
+  }
+  .navbar-brand>img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    #demo {
+      width:100% !important;
+      height:auto !important;
+  }
+      #format{
+          margin-top:90px;
+      }
+    .my-reverse{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .my_img{
+        width:100%;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  /* EXAMPLE 6 - Background Logo*/
+  /* .example6 .navbar-brand{ 
+    background: url(../images/14.gif) center / contain no-repeat;
+    width: 200px;
+  } */
+  
+  
+  
+  
+  
+  
+  
+  
+  /* EXAMPLE 9 - Center with Flexbox and Text*/
+  .brand-centered {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .brand-centered .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-toggle {
+      z-index: 1;
+  }
+  
+  
+  
+  
+  /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
+  .navbar-alignit .navbar-header {
+        -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    height: 50px;
+  }
+  .navbar-alignit .navbar-brand {
+      top: 50%;
+      display: block;
+      position: relative;
+      height: auto;
+      transform: translate(0,-50%);
+      margin-right: 15px;
+    margin-left: 15px;
+  }
+  
+  
+  .navbar-toggler{
+  padding: 10px;
+      border-radius: 5px;
+  }
+  
+  
+  
+  .navbar-nav>li>.dropdown-menu {
+  z-index: 9999;
+  }
+  
+  body {
+    font-family: "Lato";
+  }
+  .myheader .navbar a{
+      color: white !important;
+  }
+  .navbar a{
+      color: white !important;
+  }
+  .myheader .navbar ul li a{
+      color: white !important;
+  }
+  .navbar ul li a{
+      color: white !important;
+  }
+  .myheader .navbar{
+      background-color: #007acc;
+  }
+  .navbar{
+      background-color: #007acc;
+  }
+  .myheader  .navbar.scrolled{
+      background-color: #007acc ;
+  }
+  .margin{
+      margin-top:30px;
+  }
+  .myheader .navbar ul .dropdown-menu li a{
+      color: rgb(0, 0, 0) !important;
+  }
+  .navbar ul .dropdown-menu li a{
+      color: rgb(0, 0, 0) !important;
+  }

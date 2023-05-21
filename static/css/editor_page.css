@@ -1,0 +1,38 @@
+
+body {
+    font-family: Arial, sans-serif;
+    /*padding: 20px;*/
+    /*line-height:1px;*/
+  }
+
+  .paper {
+    background-color: #fff;
+    padding: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+  }
+
+  .field {
+    min-height:15px;
+    padding:8px;
+    cursor: pointer;
+    font-weight:normal;
+    margin:17px 0px 20px 5px;
+    border:none;
+    outline:none;
+  }
+
+  .editing {
+    /*border:1px solid #b3afb3;*/
+    outline:none;
+    box-shadow: 2px 2px 9px 0 #b3afb3;
+    /*background-color: red;*/
+    cursor: text;
+  }
+
+
+.headings{
+    height:15px;
+    padding:0;
+    margin:0;
+}
