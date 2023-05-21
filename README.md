@@ -3,7 +3,8 @@ Getting Started:
 
 1) Creating an Account:
 
-To start using the Co-Authoring App, you need to create an account. Visit our website at https://co-		authoring.anjaniyasoftsolutions.com  and click on the "Sign Up" button. Fill in the required details, such as your name, email address (email id is considered as username), and password. After providing the details, click on "Sign UP" to complete the registration process.
+To start using the Co-Authoring App, you need to create an account. Visit our website at 
+https://co-authoring.anjaniyasoftsolutions.com  and click on the "Sign Up" button. Fill in the required details, such as your name, email address (email id is considered as username), and password. After providing the details, click on "Sign UP" to complete the registration process.
 
 2) Logging In:
 
