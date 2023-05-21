@@ -13,10 +13,10 @@ To manage your account and view your profile information, click on your My profi
 3.2 Creating a New Document:
 To create a new document, click on the "Create New Paper" in the navigation menu. The new document will open in the editor for you to start working on.
 
-	3.3 Navigation Menu:
+3.3 Navigation Menu:
 Located on the left side of the dashboard, the navigation menu provides easy access to various sections of the app. You can navigate between My Papers, User Profile, and more by clicking on the respective menu items.
 
-	3.4 My Papers:
+3.4 My Papers:
 In this section of the dashboard, you will find a list of your own papers. Each paper is displayed with its title. You can click on 'View' to open the paper for editing.
 
 		
